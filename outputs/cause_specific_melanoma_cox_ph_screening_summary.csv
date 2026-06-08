@@ -1,0 +1,6 @@
+variable,minimum_p_value,flagged_by_any_test
+age_per_10_years,0.1363961963518218,False
+log2_tumour_thickness,0.06699440401587163,False
+male_sex,0.39271849399497394,False
+surgery_year_centered,0.5729618660942039,False
+ulceration_present,0.2676658809162795,False

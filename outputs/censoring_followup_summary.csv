@@ -1,0 +1,10 @@
+metric,value
+Total patients,205.0
+Observed all-cause deaths,71.0
+Observed all-cause deaths (%),34.63414634146341
+Censored patients,134.0
+Censored patients (%),65.3658536585366
+Minimum observed follow-up (years),0.02737850787132101
+Median observed follow-up (years),5.489390828199863
+Maximum observed follow-up (years),15.236139630390143
+Median potential follow-up: reverse Kaplan–Meier (years),6.822724161533197

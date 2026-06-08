@@ -1,0 +1,4 @@
+followup_outcome,cause_specific_event_code,patients_n
+Death from melanoma: event,1,57
+Death from other causes: censored at competing event,0,14
+Alive at end of follow-up: censored,0,134

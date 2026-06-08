@@ -1,0 +1,5 @@
+time_years,ulceration_absent_survival_probability,ulceration_present_survival_probability,ulceration_absent_survival_percent,ulceration_present_survival_percent
+1,0.982531742978068,0.9000000000000004,98.3,90.0
+3,0.9386687187379756,0.6666666666666665,93.9,66.7
+5,0.8829726122855962,0.5433962264150944,88.3,54.3
+10,0.6887377682191486,0.3871160229685307,68.9,38.7

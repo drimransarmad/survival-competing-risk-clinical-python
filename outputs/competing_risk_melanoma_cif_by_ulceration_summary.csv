@@ -1,0 +1,5 @@
+time_years,ulceration_absent_melanoma_death_cumulative_incidence,ulceration_present_melanoma_death_cumulative_incidence,ulceration_absent_melanoma_death_percent,ulceration_present_melanoma_death_percent,absolute_difference_percentage_points
+1.0,0.0,0.06666666666666667,0.0,6.7,6.7
+3.0,0.043863024240092335,0.2777777777777778,4.4,27.8,23.4
+5.0,0.09078652584445349,0.38972746331236907,9.1,39.0,29.9
+10.0,0.18165408733744237,0.5330696613680973,18.2,53.3,35.1

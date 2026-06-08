@@ -1,0 +1,12 @@
+Characteristic,Full cohort,Ulceration absent,Ulceration present
+"Patients, n",205,115,90
+"Age, years: mean (SD)",52.46 (16.67),50.61 (15.90),54.83 (17.41)
+"Male sex, n (%)",79 (38.5%),36 (31.3%),43 (47.8%)
+"Female sex, n (%)",126 (61.5%),79 (68.7%),47 (52.2%)
+Year of surgery: mean (SD),1969.91 (2.58),1969.98 (2.73),1969.81 (2.38)
+"Tumour thickness, mm: median [IQR]","1.94 [0.97, 3.56]","1.29 [0.65, 1.94]","3.54 [2.25, 5.16]"
+"Observed follow-up, years: median [IQR]","5.49 [4.18, 8.33]","5.76 [4.60, 8.71]","4.93 [2.27, 6.81]"
+"All-cause deaths, n (%)",71 (34.6%),23 (20.0%),48 (53.3%)
+"Melanoma-related deaths, n (%)",57 (27.8%),16 (13.9%),41 (45.6%)
+"Deaths from other causes, n (%)",14 (6.8%),7 (6.1%),7 (7.8%)
+"Alive / censored, n (%)",134 (65.4%),92 (80.0%),42 (46.7%)

@@ -1,0 +1,2 @@
+comparison,outcome,test,test_statistic,p_value
+Tumour ulceration absent versus present,All-cause survival,Log-rank test,27.865616748078903,1.300402109978096e-07

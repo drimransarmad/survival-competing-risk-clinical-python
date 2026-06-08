@@ -1,0 +1,3 @@
+ulceration_status,patients_n,melanoma_deaths_n,other_cause_deaths_n,alive_censored_n
+Absent,115,16,7,92
+Present,90,41,7,42

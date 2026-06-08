@@ -1,0 +1,5 @@
+time_years,ulceration_absent_standardized_survival,ulceration_present_standardized_survival,ulceration_absent_survival_percent,ulceration_present_survival_percent,absolute_survival_difference_percentage_points
+1.0,0.9678830394085292,0.9281317219103419,96.8,92.8,4.0
+3.0,0.8827489347604754,0.7589362349814803,88.3,75.9,12.4
+5.0,0.818893729089564,0.649131642231768,81.9,64.9,17.0
+10.0,0.6874933923210214,0.45972544518894554,68.7,46.0,22.7
