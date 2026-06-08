@@ -149,6 +149,7 @@ survival-competing-risk-clinical-python
 ├── outputs
 ├── Survival_Competing_Risk_Clinical_Python.ipynb
 └── README.md
+```
 
 The outputs folder contains:
 
