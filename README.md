@@ -2,21 +2,22 @@
 
 ## Clinical Melanoma Prognosis After Surgical Treatment
 
-This repository presents a reproducible Python workflow for clinical survival analysis and competing-risk modeling using publicly available malignant melanoma follow-up data.
+A reproducible Python workflow for clinical time-to-event analysis, Cox proportional-hazards modeling, competing-risk estimation, diagnostic assessment, and cautious interpretation.
 
-The project demonstrates how conventional survival analysis and competing-risk methods answer related but distinct clinical questions. It combines interpretable statistical modeling, diagnostic assessment, cautious clinical interpretation, publication-style figures, and repository-ready output tables.
+This project demonstrates how conventional survival analysis and competing-risk methods answer related but distinct clinical questions using publicly available malignant melanoma follow-up data.
 
 ---
 
-## Clinical Research Questions
+## Project Overview
 
-### Primary Survival Question
+The analysis evaluates survival outcomes after surgical treatment for malignant melanoma.
 
-Which patient and tumour characteristics are associated with the hazard of all-cause mortality after melanoma surgery?
+Two connected clinical questions are addressed:
 
-### Competing-Risk Question
+1. **Which patient and tumour characteristics are associated with all-cause mortality after surgery?**
+2. **How does the cumulative incidence of melanoma-related death differ from death due to other causes, particularly according to tumour ulceration status?**
 
-How does the cumulative incidence of melanoma-related death differ from death due to other causes, particularly according to tumour ulceration status?
+The workflow includes both conventional survival methods and competing-risk approaches so that all-cause survival, melanoma-specific mortality probability, and cause-specific hazards are interpreted appropriately rather than interchangeably.
 
 ---
 
@@ -24,25 +25,25 @@ How does the cumulative incidence of melanoma-related death differ from death du
 
 The project uses the publicly available `melanoma` dataset from the R `boot` package.
 
-The dataset contains follow-up information for **205 patients** who underwent surgical removal of malignant melanoma.
+The dataset contains **205 patients** who underwent surgical removal of malignant melanoma.
 
 Available variables include:
 
-- survival time following surgery,
-- final follow-up status,
-- patient sex,
-- age at surgery,
-- year of surgery,
-- tumour thickness,
-- and tumour ulceration status.
+* follow-up time after surgery,
+* final follow-up outcome,
+* patient sex,
+* age at surgery,
+* year of surgery,
+* tumour thickness,
+* and tumour ulceration status.
 
 The outcome variable distinguishes:
 
-- death from melanoma,
-- alive at the end of follow-up,
-- and death from another cause.
+* death from melanoma,
+* alive at the end of follow-up,
+* and death from another cause.
 
-This structure makes the dataset suitable for both conventional survival analysis and competing-risk methods.
+This structure makes the dataset suitable for both conventional survival analysis and competing-risk modeling.
 
 ---
 
@@ -50,7 +51,7 @@ This structure makes the dataset suitable for both conventional survival analysi
 
 The notebook includes:
 
-1. clinical dataset acquisition and integrity checks,
+1. data acquisition and integrity checks,
 2. censoring and follow-up assessment,
 3. Kaplan–Meier all-cause survival estimation,
 4. log-rank comparison by tumour ulceration status,
@@ -62,67 +63,90 @@ The notebook includes:
 10. melanoma-related cumulative-incidence analysis,
 11. cause-specific Cox modeling for melanoma-related death,
 12. proportional-hazards diagnostics for the cause-specific model,
-13. and comparison with a naïve Kaplan–Meier approach that treats competing events as ordinary censoring.
+13. and comparison with a naïve Kaplan–Meier approach that treats competing deaths as ordinary censoring.
 
 ---
 
-## Main Findings
+## Key Findings
 
 ### All-Cause Survival
 
 Kaplan–Meier estimates showed substantial unadjusted survival differences by tumour ulceration status.
 
-At 5 years after surgery:
+At **5 years** after surgery:
 
-- survival was **88.3%** among patients without tumour ulceration,
-- survival was **54.3%** among patients with tumour ulceration.
+* survival was **88.3%** among patients without tumour ulceration,
+* survival was **54.3%** among patients with tumour ulceration.
 
-The log-rank comparison indicated strong evidence of different survival distributions (`p < 0.001`).
+The log-rank comparison indicated strong evidence of different survival distributions: **p < 0.001**.
 
 ### Adjusted All-Cause Mortality
 
 In the primary Cox model:
 
-- each 10-year increase in age was associated with a higher all-cause mortality hazard  
-  (`HR = 1.28`, `95% CI: 1.10–1.49`);
-- each doubling of tumour thickness was associated with a higher all-cause mortality hazard  
-  (`HR = 1.32`, `95% CI: 1.07–1.63`);
-- tumour ulceration was associated with a substantially higher all-cause mortality hazard  
-  (`HR = 2.32`, `95% CI: 1.33–4.02`).
+* each 10-year increase in age was associated with a higher all-cause mortality hazard
+  **HR = 1.28**, 95% CI: **1.10–1.49**;
+* each doubling of tumour thickness was associated with a higher all-cause mortality hazard
+  **HR = 1.32**, 95% CI: **1.07–1.63**;
+* tumour ulceration was associated with a substantially higher all-cause mortality hazard
+  **HR = 2.32**, 95% CI: **1.33–4.02**.
 
 The model concordance index was **0.740**.
 
-### Exploratory Time-Varying Sensitivity Analysis
-
-The ulceration association appeared stronger during the first 5 years after surgery:
-
-- 0 to 5 years: `HR = 3.20`, `95% CI: 1.64–6.24`;
-- beyond 5 years: `HR = 1.01`, `95% CI: 0.37–2.74`.
-
-This finding should be interpreted cautiously because only 17 all-cause deaths occurred after 5 years and the interaction test was borderline (`p = 0.0502`).
-
 ### Competing-Risk Analysis
 
-At 10 years after surgery, the Aalen–Johansen cumulative-incidence estimates were:
+At **10 years** after surgery, the Aalen–Johansen cumulative-incidence estimates were:
 
-- **33.9%** for melanoma-related death,
-- **10.6%** for death from other causes.
+* **33.9%** for melanoma-related death,
+* **10.6%** for death from other causes.
 
 Tumour ulceration was associated with a pronounced descriptive difference in melanoma-related cumulative incidence:
 
-- **18.2%** without ulceration,
-- **53.3%** with ulceration.
+* **18.2%** without ulceration,
+* **53.3%** with ulceration.
 
-### Cause-Specific Melanoma-Death Hazard
+### Cause-Specific Melanoma Mortality
 
 In the adjusted cause-specific Cox model:
 
-- each doubling of tumour thickness was associated with a higher melanoma-death hazard  
-  (`HR = 1.43`, `95% CI: 1.12–1.82`);
-- tumour ulceration was associated with a substantially higher melanoma-death hazard  
-  (`HR = 2.70`, `95% CI: 1.44–5.08`).
+* each doubling of tumour thickness was associated with a higher melanoma-death hazard
+  **HR = 1.43**, 95% CI: **1.12–1.82**;
+* tumour ulceration was associated with a substantially higher melanoma-death hazard
+  **HR = 2.70**, 95% CI: **1.44–5.08**.
 
 The cause-specific model concordance index was **0.768**.
+
+---
+
+## Selected Figures
+
+### Kaplan–Meier Survival by Tumour Ulceration Status
+
+![Kaplan–Meier survival curves by tumour ulceration status](outputs/km_all_cause_survival_by_ulceration.png)
+
+### Adjusted All-Cause Hazard Ratios
+
+![Primary Cox proportional-hazards model forest plot](outputs/cox_primary_hazard_ratio_forest_plot.png)
+
+### Covariate-Standardized Adjusted Survival Curves
+
+![Covariate-standardized adjusted survival curves by tumour ulceration](outputs/cox_standardized_survival_curves_by_ulceration.png)
+
+### Overall Competing-Risk Cumulative Incidence
+
+![Overall competing-risk cumulative-incidence curves](outputs/competing_risk_overall_cumulative_incidence_curves.png)
+
+### Melanoma-Related Cumulative Incidence by Tumour Ulceration
+
+![Melanoma-related cumulative incidence by tumour ulceration status](outputs/competing_risk_melanoma_cif_by_ulceration.png)
+
+### Cause-Specific Melanoma Mortality Hazard Ratios
+
+![Cause-specific melanoma mortality Cox-model forest plot](outputs/cause_specific_melanoma_cox_hazard_ratio_forest_plot.png)
+
+### Proper Versus Naïve Estimation of Melanoma-Related Mortality
+
+![Aalen–Johansen versus naïve Kaplan–Meier comparison](outputs/competing_risk_aalen_johansen_vs_naive_km.png)
 
 ---
 
@@ -132,10 +156,10 @@ Death from another cause prevents a patient from later experiencing melanoma-rel
 
 Treating competing deaths as ordinary censored observations can therefore overestimate melanoma-related mortality.
 
-At 10 years:
+At **10 years**:
 
-- the appropriate Aalen–Johansen estimate was **33.9%**,
-- the naïve `1 − Kaplan–Meier` estimate was **35.5%**.
+* the appropriate Aalen–Johansen estimate was **33.9%**,
+* the naïve `1 − Kaplan–Meier` estimate was **35.5%**.
 
 The numerical difference was modest because only 14 competing deaths were observed. However, the comparison illustrates an important methodological principle: competing outcomes should be handled explicitly when estimating event-specific probabilities.
 
@@ -151,25 +175,15 @@ survival-competing-risk-clinical-python
 └── README.md
 ```
 
-The outputs folder contains:
+The `outputs` folder contains:
 
-29 reproducible CSV tables,
-9 publication-style PNG figures,
-and a repository-output manifest documenting the generated files.
-Selected Figures
+* **29 analytical CSV tables**,
+* **9 publication-style PNG figures**,
+* and **1 repository-output manifest**.
 
-The repository includes:
+---
 
-overall Kaplan–Meier all-cause survival,
-Kaplan–Meier survival curves by tumour ulceration,
-primary Cox-model hazard-ratio forest plot,
-scaled Schoenfeld-residual diagnostic plots,
-covariate-standardized adjusted survival curves,
-overall competing-risk cumulative-incidence curves,
-melanoma-related cumulative incidence by ulceration status,
-cause-specific Cox-model forest plot,
-and Aalen–Johansen versus naïve Kaplan–Meier comparison.
-Interpretation Boundary
+## Interpretation Boundary
 
 This is an observational prognostic analysis.
 
@@ -177,21 +191,28 @@ The estimated associations should not be interpreted as causal effects. Tumour t
 
 The project demonstrates a rigorous and reproducible workflow for clinical survival analysis, competing-risk estimation, model diagnostics, cautious interpretation, and transparent reporting. It is not a deployable clinical prediction model and has not been externally validated in an independent cohort.
 
-Technical Environment
+---
+
+## Technical Environment
 
 The notebook was developed in Google Colab using Python and the following core libraries:
 
-pandas
-NumPy
-Matplotlib
-statsmodels
-lifelines
+* `pandas`
+* `NumPy`
+* `Matplotlib`
+* `statsmodels`
+* `lifelines`
 
 The final notebook was restarted and executed from beginning to end in a clean Colab session. The repository audit confirmed that all planned analytical outputs were regenerated successfully with no missing or unexpected files.
 
-Author
+---
 
-Dr. Imran Sarmad
-PhD Statistical Consultant | Clinical, RWE, HEOR/HTA, Causal Inference & Advanced Modeling
-Website: drimransarmad.com
-LinkedIn: Dr. Imran Sarmad
+## Author
+
+**Dr. Imran Sarmad**
+*PhD Statistical Consultant | Clinical, RWE, HEOR/HTA, Causal Inference & Advanced Modeling*
+
+Website: [drimransarmad.com](https://drimransarmad.com)
+
+LinkedIn: [Dr. Imran Sarmad](https://www.linkedin.com/in/dr-imran-sarmad/)
+
